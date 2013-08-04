@@ -1,0 +1,23 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>c.png</file>
+    <file>p.png</file>
+    <file>pl.png</file>
+    <file>pl_w_r.png</file>
+    <file>c_w_r.png</file>
+    <file>help.png</file>
+    <file>open.png</file>
+    <file>pause.png</file>
+    <file>play.png</file>
+    <file>stop.png</file>
+  </qresource>
+  <qresource prefix="formulas">
+    <file>formulas/p1.png</file>
+    <file>formulas/p2.png</file>
+    <file>formulas/p3.png</file>
+    <file>formulas/p4.png</file>
+    <file>formulas/c_w_r.png</file>
+    <file>formulas/c_w_r2.png</file>
+    <file>formulas/c_w_r3.png</file>
+  </qresource>
+</RCC>
