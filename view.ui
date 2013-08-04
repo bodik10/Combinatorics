@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainForm</class>
+ <widget class="QWidget" name="mainForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>686</width>
+    <height>625</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Combinatorics - Обчислення комбінацій та перестановок</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="font">
+      <font>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="tabPosition">
+      <enum>QTabWidget::North</enum>
+     </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Triangular</enum>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>16</width>
+       <height>16</height>
+      </size>
+     </property>
+     <property name="elideMode">
+      <enum>Qt::ElideNone</enum>
+     </property>
+     <property name="usesScrollButtons">
+      <bool>false</bool>
+     </property>
+     <property name="documentMode">
+      <bool>false</bool>
+     </property>
+     <property name="tabsClosable">
+      <bool>false</bool>
+     </property>
+     <property name="movable">
+      <bool>false</bool>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="icon">
+       <iconset resource="pics/rcc.qrc">
+        <normaloff>:/icons/c.png</normaloff>:/icons/c.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string notr="true">Комбінації</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="title">
+          <string notr="true">Довідка</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="text">
+             <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Розміщенням з повтореннями із n елементів по m або дворядкованою (n, m) вибіркою з поверненнями називається довільний кортеж &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/c_w_r2.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; елементів множини M, для якого |M| = n. Кількість можливих розміщень з повтореннями із n елементів по m дорівнює n піднесене до степеня m: &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/formulas/formulas/c_w_r.png&quot;/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Наприклад, із цифр 1, 2, 3, 4 можна скласти &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/c_w_r3.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; трьохзначних числа.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="title">
+          <string>GroupBox</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="icon">
+       <iconset resource="pics/rcc.qrc">
+        <normaloff>:/icons/c_w_r.png</normaloff>:/icons/c_w_r.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string notr="true">Комбінації з повторенням</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="icon">
+       <iconset resource="pics/rcc.qrc">
+        <normaloff>:/icons/pl.png</normaloff>:/icons/pl.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string notr="true">Розміщення</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="QGroupBox" name="groupBox_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="title">
+          <string notr="true">Довідка</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="text">
+             <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;В комбінаториці, розміщенням із n елементів по m, або впорядкованою (n, m) вибіркою із множини M (потужність n, m≤n) називають довільний кортеж &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/p1.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; що складається із m попарно відмінних елементів. Кількість розміщень із n по m позначається як &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/p2.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; або &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/p3.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; і обчислюється за наступною формулою:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/formulas/formulas/p4.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="icon">
+       <iconset resource="pics/rcc.qrc">
+        <normaloff>:/icons/pl_w_r.png</normaloff>:/icons/pl_w_r.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string notr="true">Розміщення із повторенням</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="title">
+          <string notr="true">Довідка</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="text">
+             <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Розміщенням з повтореннями із n елементів по m або дворядкованою (n, m) вибіркою з поверненнями називається довільний кортеж &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/c_w_r2.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; елементів множини M, для якого |M| = n. Кількість можливих розміщень з повтореннями із n елементів по m дорівнює n піднесене до степеня m: &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/formulas/formulas/c_w_r.png&quot;/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Наприклад, із цифр 1, 2, 3, 4 можна скласти &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/c_w_r3.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; трьохзначних числа.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="icon">
+       <iconset resource="pics/rcc.qrc">
+        <normaloff>:/icons/p.png</normaloff>:/icons/p.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string notr="true">Перестановки</string>
+      </attribute>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="pics/rcc.qrc"/>
+ </resources>
+ <connections/>
+</ui>
