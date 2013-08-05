@@ -12,6 +12,11 @@
     <file>stop.png</file>
   </qresource>
   <qresource prefix="formulas">
+    <file>formulas/comb.png</file>
+    <file>formulas/comb_w_r.png</file>
+    <file>formulas/per1.png</file>
+    <file>formulas/per2.png</file>
+    <file>formulas/per3.png</file>
     <file>formulas/p1.png</file>
     <file>formulas/p2.png</file>
     <file>formulas/p3.png</file>
