@@ -6,21 +6,43 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>684</width>
-    <height>622</height>
+    <width>714</width>
+    <height>645</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>714</width>
+    <height>645</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>714</width>
+    <height>645</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string notr="true">Combinatorics - Обчислення комбінацій та перестановок</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="pics/rcc.qrc">
+    <normaloff>:/icons/pl_w_r.png</normaloff>:/icons/pl_w_r.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QTabWidget" name="tabWidget">
+    <widget class="QTabWidget" name="tabComb">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>180</height>
+      </size>
      </property>
      <property name="font">
       <font>
@@ -68,52 +90,31 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QGroupBox" name="groupBox">
+        <widget class="QLabel" name="label">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="title">
-          <string notr="true">Довідка</string>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
          </property>
-         <property name="flat">
+         <property name="text">
+          <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;В комбінаториці комбінацією n по k називається набір k елементів, виділених із даної множини, що містить n різних елементів. Набори, що відрізняються тільки порядком слідування елементів (не складом), вважаються однаковими, цим комбінації відрізняються від &lt;a href=&quot;http://google.com&quot;&gt;розміщень&lt;/a&gt;. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Число комбінацій із n по k рівно біноміальному коефіціенту:&lt;/span&gt;&lt;br/&gt;&lt;img src=&quot;:/formulas/formulas/comb.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="scaledContents">
           <bool>false</bool>
          </property>
-         <property name="checkable">
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="openExternalLinks">
           <bool>false</bool>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item>
-           <widget class="QLabel" name="label">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Plain</enum>
-            </property>
-            <property name="text">
-             <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;В комбінаториці комбінацією n по k називається набір k елементів, виділених із даної множини, що містить n різних елементів. Набори, що відрізняються тільки порядком слідування елементів (не складом), вважаються однаковими, цим комбінації відрізняються від &lt;a href=&quot;http://google.com&quot;&gt;розміщень&lt;/a&gt;. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Число комбінацій із n по k рівно біноміальному коефіціенту:&lt;/span&gt;&lt;br/&gt;&lt;img src=&quot;:/formulas/formulas/comb.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="scaledContents">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-            <property name="openExternalLinks">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
         </widget>
        </item>
       </layout>
@@ -128,49 +129,28 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_11">
        <item>
-        <widget class="QGroupBox" name="groupBox_6">
+        <widget class="QLabel" name="label_5">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="title">
-          <string notr="true">Довідка</string>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
          </property>
-         <property name="flat">
+         <property name="text">
+          <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Комбінацією із повторенням називаються набори, в яких кожен елемент може брати участь декілька разів. Число комбінацій із повторенням n по k рівно біноміальному коефіціенту: &lt;/span&gt;&lt;p&gt;&lt;img src=&quot;:/formulas/formulas/comb_w_r.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="scaledContents">
           <bool>false</bool>
          </property>
-         <property name="checkable">
-          <bool>false</bool>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_10">
-          <item>
-           <widget class="QLabel" name="label_5">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Plain</enum>
-            </property>
-            <property name="text">
-             <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Комбінацією із повторенням називаються набори, в яких кожен елемент може брати участь декілька разів. Число комбінацій із повторенням n по k рівно біноміальному коефіціенту: &lt;/span&gt;&lt;p&gt;&lt;img src=&quot;:/formulas/formulas/comb_w_r.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="scaledContents">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
       </layout>
@@ -185,43 +165,28 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
-        <widget class="QGroupBox" name="groupBox_4">
+        <widget class="QLabel" name="label_3">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="title">
-          <string notr="true">Довідка</string>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_7">
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Plain</enum>
-            </property>
-            <property name="text">
-             <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;В комбінаториці, розміщенням із n елементів по m, або впорядкованою (n, m) вибіркою із множини M (потужність n, m≤n) називають довільний кортеж &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/p1.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; що складається із m попарно відмінних елементів. Кількість розміщень із n по m позначається як &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/p2.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; або &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/p3.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; і обчислюється за наступною формулою:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/formulas/formulas/p4.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="scaledContents">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <property name="text">
+          <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;В комбінаториці, розміщенням із n елементів по m, або впорядкованою (n, m) вибіркою із множини M (потужність n, m≤n) називають довільний кортеж &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/p1.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; що складається із m попарно відмінних елементів. Кількість розміщень із n по m позначається як &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/p2.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; або &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/p3.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; і обчислюється за наступною формулою:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/formulas/formulas/p4.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="scaledContents">
+          <bool>false</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
       </layout>
@@ -236,49 +201,28 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
-        <widget class="QGroupBox" name="groupBox_3">
+        <widget class="QLabel" name="label_2">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="title">
-          <string notr="true">Довідка</string>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
          </property>
-         <property name="flat">
+         <property name="text">
+          <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Розміщенням з повтореннями із n елементів по m або дворядкованою (n, m) вибіркою з поверненнями називається довільний кортеж &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/c_w_r2.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; елементів множини M, для якого |M| = n. Кількість можливих розміщень з повтореннями із n елементів по m дорівнює n піднесене до степеня m: &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/formulas/formulas/c_w_r.png&quot;/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Наприклад, із цифр 1, 2, 3, 4 можна скласти &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/c_w_r3.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; трьохзначних числа.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="scaledContents">
           <bool>false</bool>
          </property>
-         <property name="checkable">
-          <bool>false</bool>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
-           <widget class="QLabel" name="label_2">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Plain</enum>
-            </property>
-            <property name="text">
-             <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Розміщенням з повтореннями із n елементів по m або дворядкованою (n, m) вибіркою з поверненнями називається довільний кортеж &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/c_w_r2.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; елементів множини M, для якого |M| = n. Кількість можливих розміщень з повтореннями із n елементів по m дорівнює n піднесене до степеня m: &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/formulas/formulas/c_w_r.png&quot;/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Наприклад, із цифр 1, 2, 3, 4 можна скласти &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/c_w_r3.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; трьохзначних числа.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="scaledContents">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
       </layout>
@@ -293,43 +237,28 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_9">
        <item>
-        <widget class="QGroupBox" name="groupBox_5">
+        <widget class="QLabel" name="label_4">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="title">
-          <string notr="true">Довідка</string>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_8">
-          <item>
-           <widget class="QLabel" name="label_4">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Plain</enum>
-            </property>
-            <property name="text">
-             <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Перестановкою або підстановкою скінченної множини X називається довільна бієктивна функція &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/per1.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Всього існує &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/per2.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; (факторіал) різних перестановок, де &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/per3.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; (потужність множини (кількість елементів в ній) ).&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="scaledContents">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <property name="text">
+          <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Перестановкою або підстановкою скінченної множини X називається довільна бієктивна функція &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/per1.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Всього існує &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/per2.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; (факторіал) різних перестановок, де &lt;/span&gt;&lt;img src=&quot;:/formulas/formulas/per3.png&quot;/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; (потужність множини (кількість елементів в ній) ).&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="scaledContents">
+          <bool>false</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
       </layout>
@@ -348,6 +277,35 @@
       <string notr="true">Вхідні дані</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="4">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string notr="true">К-сть вибірок:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QSpinBox" name="spinK">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>120</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>1</number>
+        </property>
+       </widget>
+      </item>
       <item row="1" column="1">
        <widget class="QRadioButton" name="radioN">
         <property name="minimumSize">
@@ -397,7 +355,7 @@
        <widget class="QLabel" name="label_7">
         <property name="text">
          <string notr="true">Задайте числову послідовність, &lt;br&gt;
-чи введіть в поле свій набір елем., розділених пробілами):</string>
+чи введіть в поле свій набір елементів, розділених пробілами):</string>
         </property>
        </widget>
       </item>
@@ -415,7 +373,7 @@
         <property name="maximumSize">
          <size>
           <width>1000</width>
-          <height>50</height>
+          <height>70</height>
          </size>
         </property>
        </widget>
@@ -441,40 +399,17 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="4">
-       <widget class="QSpinBox" name="spinK">
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>120</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>1</number>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="4">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string notr="true">К-сть вибірок:</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
    <item>
     <widget class="QGroupBox" name="groupBox_7">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="title">
       <string notr="true">Обчислення</string>
      </property>
@@ -561,7 +496,7 @@
            <string notr="true">Результат можна переглянути, відкривши вручну файл, куди він зберігається</string>
           </property>
           <property name="text">
-           <string notr="true">Показувати результат при зупинці (паузі)</string>
+           <string notr="true">Показувати результат при зупинці</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -593,7 +528,7 @@
            <bool>false</bool>
           </property>
           <property name="text">
-           <string notr="true">Зупинити</string>
+           <string notr="true">Завершити обчислення</string>
           </property>
           <property name="icon">
            <iconset resource="pics/rcc.qrc">

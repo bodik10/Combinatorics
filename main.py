@@ -22,6 +22,4 @@ class Controller:
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     c = Controller()
-    label = QtGui.QLabel("Hello World") # test
-    label.show()                        # test
     c.run()
