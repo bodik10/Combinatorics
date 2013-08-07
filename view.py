@@ -45,7 +45,7 @@ class Ui_mainForm(object):
         sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
         self.label.setSizePolicy(sizePolicy)
         self.label.setFrameShadow(QtGui.QFrame.Plain)
-        self.label.setText("<html><head/><body><p><span style=\" font-size:10pt;\">В комбінаториці комбінацією n по k називається набір k елементів, виділених із даної множини, що містить n різних елементів. Набори, що відрізняються тільки порядком слідування елементів (не складом), вважаються однаковими, цим комбінації відрізняються від <a href=\"http://google.com\">розміщень</a>. </span></p><p><span style=\" font-size:10pt;\">Число комбінацій із n по k рівно біноміальному коефіціенту:</span><br/><img src=\":/formulas/formulas/comb.png\"/></p></body></html>")
+        self.label.setText("<html><head/><body><p><span style=\" font-size:10pt;\">В комбінаториці комбінацією n по k називається набір k елементів, виділених із даної множини, що містить n різних елементів. Набори, що відрізняються тільки порядком слідування елементів (не складом), вважаються однаковими, цим комбінації відрізняються від <a href=\"#tab2\">розміщень</a>. </span></p><p><span style=\" font-size:10pt;\">Число комбінацій із n по k рівно біноміальному коефіціенту:</span><br/><img src=\":/formulas/formulas/comb.png\"/></p></body></html>")
         self.label.setScaledContents(False)
         self.label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label.setWordWrap(True)
@@ -324,5 +324,18 @@ class View(QtGui.QWidget, Ui_mainForm):
         self.show()
         
     def handleEvents(self):
+        # enable/disable spinBox or plainTextEdit
         self.connect(self.radioN, QtCore.SIGNAL("toggled(bool)"), self.spinN.setEnabled)
         self.connect(self.radioNCustom, QtCore.SIGNAL("toggled(bool)"), self.plainNCustom.setEnabled)
+
+        self.tabComb.currentChanged.connect(self.handleChangeTab)
+        
+        # link in QLabel leads to other Tab within QTabWidget
+        self.label.linkActivated.connect(lambda link: self.tabComb.setCurrentIndex(int(link[4:])))
+
+        # prevent setting K larger than N
+        self.spinN.valueChanged.connect(lambda value: self.spinK.setMaximum(value))
+        
+    def handleChangeTab(self, index):
+        self.currentTab = self.tabComb.tabText(index)
+        self.setWindowTitle(self.title + " - " + self.currentTab)
