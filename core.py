@@ -1,6 +1,7 @@
 "модуль із класом Core що включає в собі деякі методи комбінаторики, які використовуються в програмі"
 
 import itertools
+from math import factorial as fact
 
 class Core:
     perm = itertools.permutations                           # перестановки
@@ -8,17 +9,17 @@ class Core:
     comb_w_repl = itertools.combinations_with_replacement   # комбінації із повторенями (порядок не враховується)
     
     @staticmethod
-    def comb_all(seq, depth, prev=""):      # комбінації із повторенями (порядок ВРАХОВУЄТЬСЯ)
+    def place_w_repl(seq, depth, prev=""):      # розміщення із повторенями (порядок ВРАХОВУЄТЬСЯ)
         for char in seq:
             res = prev + char
             if len(res) == depth:
                 yield res
             else:
-                for res in Core.comb_all(seq, depth, prev=res):
+                for res in Core.place_w_repl(seq, depth, prev=res):
                     yield res
                     
     @staticmethod
-    def place(seq, N, prev=""):             # кількість розміщень із seq по N (порядок ВРАХОВУЄТЬСЯ)
+    def place(seq, N, prev=""):             # розміщеня із seq по N (порядок ВРАХОВУЄТЬСЯ)
         for char in seq:
             res = prev + char
             if len(res) == N:
@@ -31,9 +32,9 @@ class Core:
                     
 # тестування
 if __name__ == '__main__':
-    for i in Core.comb_all("abcd", 3):
+    for i in Core.place_w_repl("abcd", 3):
         print(i, end=" ")  
-    print(len(list(Core.comb_all("abcd", 3))))
+    print(len(list(Core.place_w_repl("abcd", 3))))
     
     for i in Core.place("abcdef", 3):
         print(i, end=" ")  
