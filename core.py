@@ -4,6 +4,8 @@ import itertools
 from math import factorial as fact
 
 class Core:
+    # Методи-генератори комбінацій/перестановок
+    
     perm = itertools.permutations                           # перестановки
     comb = itertools.combinations                           # комбінації без повторень (порядок не враховується)
     comb_w_repl = itertools.combinations_with_replacement   # комбінації із повторенями (порядок не враховується)
@@ -29,15 +31,44 @@ class Core:
                 new_s.remove(char)
                 for res in Core.place(new_s, N, prev=res):
                     yield res
-                    
+
+    # 
+    # Методи для обчислення кількості комбінацій/перестановок
+    
+    @staticmethod
+    def perm_number(seq):
+        N = len(seq)
+        return fact(N)
+
+    @staticmethod
+    def comb_number(seq, k):
+        N = len(seq)
+        return int(fact(N)/(fact(k) * fact(N-k)))
+
+    @staticmethod
+    def comb_w_repl_number(seq, k):
+        N = len(seq)
+        return int(fact(N+k-1)/(fact(k) * fact(N-1)))
+    
+    @staticmethod
+    def place_w_repl_number(seq, k):
+        N = len(seq)
+        return N**k
+
+    @staticmethod
+    def place_number(seq, k):
+        N = len(seq)
+        return int(fact(N)/fact(N-k))
+
+    
 # тестування
 if __name__ == '__main__':
     for i in Core.place_w_repl("abcd", 3):
         print(i, end=" ")  
-    print(len(list(Core.place_w_repl("abcd", 3))))
+    print(Core.place_w_repl_number("abcd", 3))
     
     for i in Core.place("abcdef", 3):
         print(i, end=" ")  
-    print(len(list(Core.place("abcdef", 3))))
+    print(Core.place_number("abcdef", 3))
     
-    
+    print(len(list(Core.perm(range(10)))), Core.perm_number(range(10)))

@@ -425,6 +425,18 @@
         <property name="frameShadow">
          <enum>QFrame::Plain</enum>
         </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="tabKeyNavigation">
+         <bool>false</bool>
+        </property>
+        <property name="dragDropOverwriteMode">
+         <bool>false</bool>
+        </property>
+        <property name="gridStyle">
+         <enum>Qt::SolidLine</enum>
+        </property>
         <property name="rowCount">
          <number>7</number>
         </property>
@@ -436,37 +448,37 @@
         </attribute>
         <row>
          <property name="text">
-          <string>Тип обчислення</string>
+          <string notr="true">Тип обчислення</string>
          </property>
         </row>
         <row>
          <property name="text">
-          <string>Усього варіантів</string>
+          <string notr="true">Усього варіантів</string>
          </property>
         </row>
         <row>
          <property name="text">
-          <string>Згенеровано</string>
+          <string notr="true">Згенеровано</string>
          </property>
         </row>
         <row>
          <property name="text">
-          <string>Прогрес (%)</string>
+          <string notr="true">Прогрес (%)</string>
          </property>
         </row>
         <row>
          <property name="text">
-          <string>Час обчислення</string>
+          <string notr="true">Час обчислення</string>
          </property>
         </row>
         <row>
          <property name="text">
-          <string>Часу залишилось</string>
+          <string notr="true">Часу залишилось</string>
          </property>
         </row>
         <row>
          <property name="text">
-          <string>Файл із результатом</string>
+          <string notr="true">Файл із результатом</string>
          </property>
         </row>
         <column/>
@@ -496,12 +508,33 @@
            <string notr="true">Результат можна переглянути, відкривши вручну файл, куди він зберігається</string>
           </property>
           <property name="text">
-           <string notr="true">Показувати результат при зупинці</string>
+           <string notr="true">Показувати результат на паузі</string>
           </property>
           <property name="checked">
            <bool>true</bool>
           </property>
          </widget>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="spinColumns">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>100</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string notr="true">Кількість колонок:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <widget class="QPushButton" name="btnStart">

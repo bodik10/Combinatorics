@@ -5,7 +5,7 @@ Created on 1 серп. 2013
 '''
 import sys
 
-from core import *
+
 from view import *
 
 from PySide import QtCore, QtGui

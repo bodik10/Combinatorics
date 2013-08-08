@@ -2,6 +2,10 @@
 
 from PySide import QtCore, QtGui
 
+import rcc_rc
+
+from core import *
+
 class Ui_mainForm(object):
     def setupUi(self, mainForm):
         mainForm.setObjectName("mainForm")
@@ -35,6 +39,10 @@ class Ui_mainForm(object):
         self.tabComb.setMovable(False)
         self.tabComb.setObjectName("tabComb")
         self.tab = QtGui.QWidget()
+        
+        self.tab.coreGenerator = Core.comb      # Each method that generates comb. stored in his Tab page (QWidget)
+        self.tab.coreNumber = Core.comb_number  # Each method that calculates number of comb. stored in his Tab page (QWidget)
+        
         self.tab.setObjectName("tab")
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.tab)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
@@ -56,6 +64,10 @@ class Ui_mainForm(object):
         icon1.addPixmap(QtGui.QPixmap(":/icons/c.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabComb.addTab(self.tab, icon1, "Комбінації")
         self.tab_2 = QtGui.QWidget()
+
+        self.tab_2.coreGenerator = Core.comb_w_repl      # Each method that generates comb. stored in his Tab page (QWidget)
+        self.tab_2.coreNumber = Core.comb_w_repl_number  # Each method that calculates number of comb. stored in his Tab page (QWidget)
+        
         self.tab_2.setObjectName("tab_2")
         self.verticalLayout_11 = QtGui.QVBoxLayout(self.tab_2)
         self.verticalLayout_11.setObjectName("verticalLayout_11")
@@ -76,6 +88,10 @@ class Ui_mainForm(object):
         icon2.addPixmap(QtGui.QPixmap(":/icons/c_w_r.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabComb.addTab(self.tab_2, icon2, "Комбінації з повторенням")
         self.tab_5 = QtGui.QWidget()
+
+        self.tab_5.coreGenerator = Core.place      # Each method that generates comb. stored in his Tab page (QWidget) 
+        self.tab_5.coreNumber = Core.place_number  # Each method that calculates number of comb. stored in his Tab page (QWidget)
+
         self.tab_5.setObjectName("tab_5")
         self.verticalLayout_6 = QtGui.QVBoxLayout(self.tab_5)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
@@ -96,6 +112,10 @@ class Ui_mainForm(object):
         icon3.addPixmap(QtGui.QPixmap(":/icons/pl.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabComb.addTab(self.tab_5, icon3, "Розміщення")
         self.tab_3 = QtGui.QWidget()
+
+        self.tab_3.coreGenerator = Core.place_w_repl      # Each method that generates comb. stored in his Tab page (QWidget)
+        self.tab_3.coreNumber = Core.place_w_repl_number  # Each method that calculates number of comb. stored in his Tab page (QWidget)
+
         self.tab_3.setObjectName("tab_3")
         self.verticalLayout_5 = QtGui.QVBoxLayout(self.tab_3)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
@@ -114,6 +134,10 @@ class Ui_mainForm(object):
         self.verticalLayout_5.addWidget(self.label_2)
         self.tabComb.addTab(self.tab_3, icon, "Розміщення із повторенням")
         self.tab_4 = QtGui.QWidget()
+
+        self.tab_4.coreGenerator = Core.perm      # Each method that generates comb. stored in his Tab page (QWidget)
+        self.tab_4.coreNumber = Core.perm_number  # Each method that calculates number of comb. stored in his Tab page (QWidget)
+
         self.tab_4.setObjectName("tab_4")
         self.verticalLayout_9 = QtGui.QVBoxLayout(self.tab_4)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
@@ -177,8 +201,7 @@ class Ui_mainForm(object):
         self.spinN.setObjectName("spinN")
         self.gridLayout.addWidget(self.spinN, 1, 2, 1, 1)
         self.label_7 = QtGui.QLabel(self.groupBox_2)
-        self.label_7.setText("Задайте числову послідовність, <br>\n"
-"чи введіть в поле свій набір елементів, розділених пробілами):")
+        self.label_7.setText("Задайте числову послідовність, <br>\nчи введіть в поле свій набір елементів, розділених пробілами):")
         self.label_7.setObjectName("label_7")
         self.gridLayout.addWidget(self.label_7, 0, 2, 1, 1)
         self.plainNCustom = QtGui.QPlainTextEdit(self.groupBox_2)
@@ -221,6 +244,10 @@ class Ui_mainForm(object):
         self.tableMetadata.setToolTip("")
         self.tableMetadata.setFrameShape(QtGui.QFrame.Panel)
         self.tableMetadata.setFrameShadow(QtGui.QFrame.Plain)
+        self.tableMetadata.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
+        self.tableMetadata.setTabKeyNavigation(False)
+        self.tableMetadata.setDragDropOverwriteMode(False)
+        self.tableMetadata.setGridStyle(QtCore.Qt.SolidLine)
         self.tableMetadata.setRowCount(7)
         self.tableMetadata.setColumnCount(1)
         self.tableMetadata.setObjectName("tableMetadata")
@@ -228,37 +255,53 @@ class Ui_mainForm(object):
         self.tableMetadata.setRowCount(7)
         item = QtGui.QTableWidgetItem()
         self.tableMetadata.setVerticalHeaderItem(0, item)
+        self.tableMetadata.verticalHeaderItem(0).setText("Тип обчислення")
         item = QtGui.QTableWidgetItem()
         self.tableMetadata.setVerticalHeaderItem(1, item)
+        self.tableMetadata.verticalHeaderItem(1).setText("Усього варіантів")
         item = QtGui.QTableWidgetItem()
         self.tableMetadata.setVerticalHeaderItem(2, item)
+        self.tableMetadata.verticalHeaderItem(2).setText("Згенеровано")
         item = QtGui.QTableWidgetItem()
         self.tableMetadata.setVerticalHeaderItem(3, item)
+        self.tableMetadata.verticalHeaderItem(3).setText("Прогрес (%)")
         item = QtGui.QTableWidgetItem()
         self.tableMetadata.setVerticalHeaderItem(4, item)
+        self.tableMetadata.verticalHeaderItem(4).setText("Час обчислення")
         item = QtGui.QTableWidgetItem()
         self.tableMetadata.setVerticalHeaderItem(5, item)
+        self.tableMetadata.verticalHeaderItem(5).setText("Часу залишилось")
         item = QtGui.QTableWidgetItem()
         self.tableMetadata.setVerticalHeaderItem(6, item)
+        self.tableMetadata.verticalHeaderItem(6).setText("Файл із результатом")
         self.tableMetadata.horizontalHeader().setVisible(False)
         self.horizontalLayout.addWidget(self.tableMetadata)
         self.verticalLayout_12 = QtGui.QVBoxLayout()
         self.verticalLayout_12.setObjectName("verticalLayout_12")
         self.checkMetadata = QtGui.QCheckBox(self.groupBox_7)
-        self.checkMetadata.setToolTip("У файл із результатом буде включена додаткова інформація:<br>\n"
-"- к-сть комбінацій<br>\n"
-"- скільки множин згенеровано, і скільки залишилось<br>\n"
-"- час генерації/скільки залишилось")
+        self.checkMetadata.setToolTip("У файл із результатом буде включена додаткова інформація:<br>\n- к-сть комбінацій<br>\n- скільки множин згенеровано, і скільки залишилось<br>\n- час генерації/скільки залишилось")
         self.checkMetadata.setText("Включати в результат метадані")
         self.checkMetadata.setChecked(True)
         self.checkMetadata.setObjectName("checkMetadata")
         self.verticalLayout_12.addWidget(self.checkMetadata)
         self.checkShowResult = QtGui.QCheckBox(self.groupBox_7)
         self.checkShowResult.setToolTip("Результат можна переглянути, відкривши вручну файл, куди він зберігається")
-        self.checkShowResult.setText("Показувати результат при зупинці")
+        self.checkShowResult.setText("Показувати результат на паузі")
         self.checkShowResult.setChecked(True)
         self.checkShowResult.setObjectName("checkShowResult")
         self.verticalLayout_12.addWidget(self.checkShowResult)
+        self.formLayout = QtGui.QFormLayout()
+        self.formLayout.setObjectName("formLayout")
+        self.spinColumns = QtGui.QSpinBox(self.groupBox_7)
+        self.spinColumns.setMinimum(1)
+        self.spinColumns.setMaximum(100)
+        self.spinColumns.setObjectName("spinColumns")
+        self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.spinColumns)
+        self.label_8 = QtGui.QLabel(self.groupBox_7)
+        self.label_8.setText("Кількість колонок:")
+        self.label_8.setObjectName("label_8")
+        self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_8)
+        self.verticalLayout_12.addLayout(self.formLayout)
         self.btnStart = QtGui.QPushButton(self.groupBox_7)
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -297,15 +340,8 @@ class Ui_mainForm(object):
         QtCore.QMetaObject.connectSlotsByName(mainForm)
 
     def retranslateUi(self, mainForm):
-        self.tableMetadata.verticalHeaderItem(0).setText(QtGui.QApplication.translate("mainForm", "Тип обчислення", None, QtGui.QApplication.UnicodeUTF8))
-        self.tableMetadata.verticalHeaderItem(1).setText(QtGui.QApplication.translate("mainForm", "Усього варіантів", None, QtGui.QApplication.UnicodeUTF8))
-        self.tableMetadata.verticalHeaderItem(2).setText(QtGui.QApplication.translate("mainForm", "Згенеровано", None, QtGui.QApplication.UnicodeUTF8))
-        self.tableMetadata.verticalHeaderItem(3).setText(QtGui.QApplication.translate("mainForm", "Прогрес (%)", None, QtGui.QApplication.UnicodeUTF8))
-        self.tableMetadata.verticalHeaderItem(4).setText(QtGui.QApplication.translate("mainForm", "Час обчислення", None, QtGui.QApplication.UnicodeUTF8))
-        self.tableMetadata.verticalHeaderItem(5).setText(QtGui.QApplication.translate("mainForm", "Часу залишилось", None, QtGui.QApplication.UnicodeUTF8))
-        self.tableMetadata.verticalHeaderItem(6).setText(QtGui.QApplication.translate("mainForm", "Файл із результатом", None, QtGui.QApplication.UnicodeUTF8))
+        pass
 
-import rcc_rc
 
 class View(QtGui.QWidget, Ui_mainForm):
     def __init__(self, parent = None, controller = None):
