@@ -393,5 +393,13 @@ class View(QtGui.QWidget, Ui_mainForm):
     
     def MetaTableUpdate(self, m):
         self.tableMetadata.setItem(1, 0, QtGui.QTableWidgetItem(str(m.All)))
+        self.tableMetadata.resizeColumnsToContents()
         
+    def MetaTableUpdateTime(self, m):
+        self.tableMetadata.setItem(4, 0, QtGui.QTableWidgetItem(m.time))
+        self.tableMetadata.setItem(5, 0, QtGui.QTableWidgetItem(m.left))   
+        self.tableMetadata.resizeColumnsToContents()
+        
+    def MetaTableUpdateProgress(self, progress):
+        self.tableMetadata.setItem(2, 0, QtGui.QTableWidgetItem(str(progress)))
         self.tableMetadata.resizeColumnsToContents()
