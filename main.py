@@ -32,7 +32,7 @@ class Controller:
         self.v.btnStart.clicked.connect(self.handleStart)
         self.v.btnStop.clicked.connect(self.handleStop)
         
-        self.v.connect(self.thread, QtCore.SIGNAL("upd_prog_bar(int)"), self.v.progressBar, QtCore.SLOT("setValue(int)"))
+        self.v.connect(self.thread, QtCore.SIGNAL("upd_prog_bar(int)"), self.v.metaRows["progressBar"], QtCore.SLOT("setValue(int)"))
         self.thread.finished.connect(lambda: print(len(self.m.result)))
         #self.v.connect(self.thread, QtCore.SIGNAL("upd_prog(int)"), self.v.MetaTableUpdateProgress)
     

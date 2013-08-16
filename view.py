@@ -253,14 +253,31 @@ class Ui_mainForm(object):
         self.tableMetadata.horizontalHeader().setVisible(False)
         self.tableMetadata.setVerticalHeaderLabels(["Тип обчислення", "Усього варіантів", "Згенеровано", "Прогрес (%)", "Час обчислення", "Часу залишилось", "Файл із результатом"])
         self.horizontalLayout.addWidget(self.tableMetadata)
+
+        # save link to each row in MetaTable
+        self.metaRows = {}        
+        self.metaRows["name"]       = QtGui.QTableWidgetItem("")
+        self.metaRows["all"]        = QtGui.QTableWidgetItem("1")
+        self.metaRows["complete"]   = QtGui.QTableWidgetItem("0")
+        self.metaRows["time"]       = QtGui.QTableWidgetItem("")
+        self.metaRows["left"]       = QtGui.QTableWidgetItem("")
+        self.metaRows["result"]     = QtGui.QTableWidgetItem("")
+
+        self.tableMetadata.setItem(0, 0, self.metaRows["name"])
+        self.tableMetadata.setItem(1, 0, self.metaRows["all"])
+        self.tableMetadata.setItem(2, 0, self.metaRows["complete"])
+        self.tableMetadata.setItem(4, 0, self.metaRows["time"])
+        self.tableMetadata.setItem(5, 0, self.metaRows["left"])
+        self.tableMetadata.setItem(6, 0, self.metaRows["result"])
         
         # add progressBar to Table Cell
-        self.progressBar = QtGui.QProgressBar()
-        self.progressBar.setMinimum(0)
-        self.progressBar.setMaximum(100)
-        self.progressBar.setMinimumWidth(300)
-        self.progressBar.setMaximumHeight(20)
-        self.tableMetadata.setCellWidget(3, 0, self.progressBar)
+        self.metaRows["progressBar"] = QtGui.QProgressBar()
+        self.metaRows["progressBar"].setMinimum(0)
+        self.metaRows["progressBar"].setMaximum(100)
+        self.metaRows["progressBar"].setMinimumWidth(300)
+        self.metaRows["progressBar"].setMaximumHeight(20)
+        
+        self.tableMetadata.setCellWidget(3, 0, self.metaRows["progressBar"])
         self.tableMetadata.resizeColumnsToContents()
         
         self.verticalLayout_12 = QtGui.QVBoxLayout()
@@ -381,13 +398,13 @@ class View(QtGui.QWidget, Ui_mainForm):
             w.setDisabled(flag)
     
     def MetaTableReset(self):
-        self.tableMetadata.setItem(0, 0, QtGui.QTableWidgetItem(self.currentTabText))
-        self.tableMetadata.setItem(1, 0, QtGui.QTableWidgetItem("1"))
-        self.tableMetadata.setItem(2, 0, QtGui.QTableWidgetItem("0"))
-        self.progressBar.setValue(0)
-        self.tableMetadata.setItem(4, 0, QtGui.QTableWidgetItem(""))
-        self.tableMetadata.setItem(5, 0, QtGui.QTableWidgetItem(""))
-        #self.tableMetadata.setItem(6, 0, QtGui.QTableWidgetItem(""))
+        self.metaRows["name"].setText(self.currentTabText)
+        self.metaRows["all"].setText("1")
+        self.metaRows["complete"].setText("0")
+        self.metaRows["progressBar"].setValue(0)
+        self.metaRows["time"].setText("")
+        self.metaRows["left"].setText("")
+        #self.metaRows["result"].setText("")
         
         self.tableMetadata.resizeColumnsToContents()
     
