@@ -6,7 +6,7 @@ import rcc_rc
 
 from core import *
 
-class Ui_mainForm(object):
+class View(object):
     def setupUi(self, mainForm):
         mainForm.setObjectName("mainForm")
         mainForm.resize(714, 645)
@@ -345,78 +345,3 @@ class Ui_mainForm(object):
 
     def retranslateUi(self, mainForm):
         pass
-
-
-class View(QtGui.QWidget, Ui_mainForm):
-    def __init__(self, parent = None, controller = None):
-        QtGui.QWidget.__init__(self, parent)
-        
-        self.controller = controller
-        
-        self.setupUi(self)
-        
-        self.title = "Combinatorics - Обчислення комбінацій та перестановок" 
-        self.currentTabText = self.tabComb.tabText(self.tabComb.currentIndex())
-        self.currentTab = self.tabComb.currentWidget()
-        self.setWindowTitle(self.title + " - " + self.currentTabText)
-        
-        self.MetaTableReset()
-        
-        self.handleEvents()
-        
-        self.show()
-        
-    def handleEvents(self):
-        # enable/disable spinBox or plainTextEdit
-        self.connect(self.radioN, QtCore.SIGNAL("toggled(bool)"), self.spinN.setEnabled)
-        self.connect(self.radioNCustom, QtCore.SIGNAL("toggled(bool)"), self.plainNCustom.setEnabled)
-
-        self.tabComb.currentChanged.connect(self.handleChangeTab)
-        
-        # link in QLabel leads to other Tab within QTabWidget
-        self.label.linkActivated.connect(lambda link: self.tabComb.setCurrentIndex(int(link[4:])))
-
-        # prevent setting K larger than N
-        self.spinN.valueChanged.connect(lambda value: self.spinK.setMaximum(value))
-        
-    def handleChangeTab(self, index):
-        self.currentTabText = self.tabComb.tabText(index)
-        self.currentTab = self.tabComb.widget(index)
-        self.setWindowTitle(self.title + " - " + self.currentTabText)
-        
-        self.spinK.setDisabled(index==4) # Permutation doesn't require K, only N
-        
-        self.MetaTableReset()
-        
-    def disabledWhenStart(self, flag):
-        # list of elements that gonna be disabled when Calc. starts (and enabled when stops)
-        disableList = [self.tabComb, self.groupInput, self.checkMetadata, self.checkShowResult, self.spinColumns, self.btnResultPath]
-        
-        self.btnStop.setEnabled(flag)
-        
-        for w in disableList:
-            w.setDisabled(flag)
-    
-    def MetaTableReset(self):
-        self.metaRows["name"].setText(self.currentTabText)
-        self.metaRows["all"].setText("1")
-        self.metaRows["complete"].setText("0")
-        self.metaRows["progressBar"].setValue(0)
-        self.metaRows["time"].setText("")
-        self.metaRows["left"].setText("")
-        #self.metaRows["result"].setText("")
-        
-        self.tableMetadata.resizeColumnsToContents()
-    
-    def MetaTableUpdate(self, m):
-        self.tableMetadata.setItem(1, 0, QtGui.QTableWidgetItem(str(m.All)))
-        self.tableMetadata.resizeColumnsToContents()
-        
-    def MetaTableUpdateTime(self, m):
-        self.tableMetadata.setItem(4, 0, QtGui.QTableWidgetItem(m.time))
-        self.tableMetadata.setItem(5, 0, QtGui.QTableWidgetItem(m.left))   
-        self.tableMetadata.resizeColumnsToContents()
-        
-    def MetaTableUpdateProgress(self, progress):
-        self.tableMetadata.setItem(2, 0, QtGui.QTableWidgetItem(str(progress)))
-        self.tableMetadata.resizeColumnsToContents()

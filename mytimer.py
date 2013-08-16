@@ -5,12 +5,12 @@ class MyTimer(QtCore.QTimer):
     classdocs
     '''
     
-    def __init__(self, parent, c):
+    def __init__(self, parent):
         '''
         Constructor
         '''
         QtCore.QTimer.__init__(self, parent)
-        self.c = c
+        self.c = parent
         
         self.connect(self, QtCore.SIGNAL("timeout()"), self.update_time);
         
@@ -38,4 +38,4 @@ class MyTimer(QtCore.QTimer):
         
         self.c.m.left_sec -= 1
         self.update_left(self.c.m.left_sec)
-        self.c.v.MetaTableUpdateTime(self.c.m)
+        self.c.MetaTimeUpdate()
