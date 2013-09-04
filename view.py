@@ -9,9 +9,9 @@ from core import *
 class View(object):
     def setupUi(self, mainForm):
         mainForm.setObjectName("mainForm")
-        mainForm.resize(714, 645)
-        mainForm.setMinimumSize(QtCore.QSize(714, 645))
-        mainForm.setMaximumSize(QtCore.QSize(714, 645))
+        mainForm.resize(714, 675)
+        mainForm.setMinimumSize(QtCore.QSize(714, 675))
+        mainForm.setMaximumSize(QtCore.QSize(714, 675))
         mainForm.setWindowTitle("Combinatorics - Обчислення комбінацій та перестановок")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/pl_w_r.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -176,7 +176,7 @@ class View(object):
         self.spinK.setMinimumSize(QtCore.QSize(100, 0))
         self.spinK.setMaximumSize(QtCore.QSize(120, 16777215))
         self.spinK.setMinimum(1)
-        self.spinK.setMaximum(1)
+        self.spinK.setMaximum(100000000)
         self.spinK.setObjectName("spinK")
         self.gridLayout.addWidget(self.spinK, 1, 4, 1, 1)
         self.radioN = QtGui.QRadioButton(self.groupInput)
@@ -245,16 +245,14 @@ class View(object):
         self.tableMetadata.setGridStyle(QtCore.Qt.SolidLine)
         self.tableMetadata.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.tableMetadata.setHorizontalScrollMode(QtGui.QAbstractItemView.ScrollPerPixel)
-        self.tableMetadata.setRowCount(7)
-        self.tableMetadata.setColumnCount(1)
         self.tableMetadata.setObjectName("tableMetadata")
         self.tableMetadata.setColumnCount(1)
-        self.tableMetadata.setRowCount(7)
+        self.tableMetadata.setRowCount(8)
         self.tableMetadata.horizontalHeader().setVisible(False)
-        self.tableMetadata.setVerticalHeaderLabels(["Тип обчислення", "Усього варіантів", "Згенеровано", "Прогрес (%)", "Час обчислення", "Часу залишилось", "Файл із результатом"])
+        self.tableMetadata.setVerticalHeaderLabels(["Тип обчислення", "Усього варіантів", "Згенеровано", "Прогрес (%)", "Час обчислення", "Часу залишилось", "Файл із результатом", "Розмір файла"])
         self.horizontalLayout.addWidget(self.tableMetadata)
 
-        # save link to each row in MetaTable
+        # save link to each MetaTable's row in dictionary
         self.metaRows = {}        
         self.metaRows["name"]       = QtGui.QTableWidgetItem("")
         self.metaRows["all"]        = QtGui.QTableWidgetItem("1")
@@ -262,6 +260,7 @@ class View(object):
         self.metaRows["time"]       = QtGui.QTableWidgetItem("")
         self.metaRows["left"]       = QtGui.QTableWidgetItem("")
         self.metaRows["result"]     = QtGui.QTableWidgetItem("")
+        self.metaRows["result"].setToolTip("Двічі клацніть на комірці щоб відкрити файл із результатом")
 
         self.tableMetadata.setItem(0, 0, self.metaRows["name"])
         self.tableMetadata.setItem(1, 0, self.metaRows["all"])
@@ -271,14 +270,38 @@ class View(object):
         self.tableMetadata.setItem(6, 0, self.metaRows["result"])
         
         # add progressBar to Table Cell
+        self.progressWidget = QtGui.QWidget(mainForm)               # solution for CellWidget Vertical alignment
+        verticalLayout = QtGui.QVBoxLayout(self.progressWidget)
+        verticalLayout.setContentsMargins(5, 0, 0, 0)
+    
         self.metaRows["progressBar"] = QtGui.QProgressBar()
         self.metaRows["progressBar"].setMinimum(0)
         self.metaRows["progressBar"].setMaximum(100)
         self.metaRows["progressBar"].setMinimumWidth(300)
-        self.metaRows["progressBar"].setMaximumHeight(20)
+        self.metaRows["progressBar"].setMaximumWidth(300)
+        self.metaRows["progressBar"].setMaximumHeight(15)
         
-        self.tableMetadata.setCellWidget(3, 0, self.metaRows["progressBar"])
+        verticalLayout.addWidget(self.metaRows["progressBar"])      # put ProgBar into another Widget so it will be vertical aligned within Table Cell
+
+        self.tableMetadata.setCellWidget(3, 0, self.progressWidget)
+          
+        # add "File Size" cell
+        self.filesizeWidget = QtGui.QWidget(mainForm)               
+        horizontalLayout = QtGui.QHBoxLayout(self.filesizeWidget)
+        horizontalLayout.setContentsMargins(5, 0, 0, 0)
+        
+        self.metaRows["labelSize"] = QtGui.QLabel("0 байт")
+        self.metaRows["btnClear"] = QtGui.QPushButton("Очистити")
+        
+        horizontalLayout.addWidget(self.metaRows["labelSize"])
+        horizontalLayout.addWidget(self.metaRows["btnClear"])
+        horizontalLayout.addItem(QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum))
+        
+        self.tableMetadata.setCellWidget(7, 0, self.filesizeWidget)
+        
+        
         self.tableMetadata.resizeColumnsToContents()
+        
         
         self.verticalLayout_12 = QtGui.QVBoxLayout()
         self.verticalLayout_12.setObjectName("verticalLayout_12")
