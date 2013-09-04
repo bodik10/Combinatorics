@@ -11,9 +11,9 @@ class Core:
     comb_w_repl = itertools.combinations_with_replacement   # комбінації із повторенями (порядок не враховується)
 
     @staticmethod
-    def place(seq, N, prev=""):             # розміщеня із seq по N (порядок ВРАХОВУЄТЬСЯ)
+    def place(seq, N, prev=[]):             # розміщеня із seq по N (порядок ВРАХОВУЄТЬСЯ)
         for char in seq:
-            res = prev + char
+            res = prev + [char]
             if len(res) == N:
                 yield res
             else:
@@ -23,9 +23,9 @@ class Core:
                     yield res
 
     @staticmethod
-    def place_w_repl(seq, depth, prev=""):  # розміщення із повторенями (порядок ВРАХОВУЄТЬСЯ)
-        for char in seq:
-            res = prev + char
+    def place_w_repl(seq, depth, prev=()):  # розміщення із повторенями (порядок ВРАХОВУЄТЬСЯ)
+        for char in tuple(seq):
+            res = prev + (char,)
             if len(res) == depth:
                 yield res
             else:
@@ -76,4 +76,14 @@ if __name__ == '__main__':
         print(i, end=" ")  
     print(Core.place_number("abcdef", 3))
     
-    print(len(list(Core.perm(range(10)))), Core.perm_number(range(10)))
+    print(len(list(Core.perm(range(10), None))), Core.perm_number(range(10), None))
+    
+    l=[]
+    for i in Core.comb(range(15545), 15):
+        l.append(i)
+        if len(l)>50: break
+    print(l)
+    
+    print( len ( list(Core.place_w_repl("01", 8)) ) )
+    
+    print( len ( list(Core.place("abcca", 3)) ) )
