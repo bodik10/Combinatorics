@@ -31,11 +31,27 @@ class MyTimer(QtCore.QTimer):
         self.c.m.left = "%s %s" % (val, unit)
                 
     def update_time(self):
+        # time past
         self.c.m.time_sec += 1
         
         time = self.c.m.time_sec
         self.c.m.time = "{0:02d}:{1:02d}:{2:02d}".format( *(time//3600, (time//60)%60, time%60) )
         
-        self.c.m.left_sec -= 1
+        # progress
+        percent = self.c.m.complete / self.c.m.All * 100
+        
+        self.emit(QtCore.SIGNAL("upd_prog_bar(int)"), round(percent))
+        self.emit(QtCore.SIGNAL("upd_prog(int)"), self.c.m.complete)
+
+        # every second calculate time that left
+        # just compare all time that pass to generate curren percent
+        
+        # e.g. 3 sec need to generate 5%, so 100% will be generate for 100%/5%*3s = 60sec
+        # and left 95% for 95%/5%*3s = 57sec
+        approx_left = (100-percent) / percent * self.c.m.time_sec
+        self.c.m.left_sec = approx_left
         self.update_left(self.c.m.left_sec)
+
+        
         self.c.MetaTimeUpdate()
+        

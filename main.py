@@ -75,9 +75,8 @@ class Controller(QtGui.QWidget, View):
         
         self.tableMetadata.cellDoubleClicked.connect(self.openResult)
         
-        self.connect(self.thread, QtCore.SIGNAL("upd_prog_bar(int)"), self.metaRows["progressBar"], QtCore.SLOT("setValue(int)"))
-        self.connect(self.thread, QtCore.SIGNAL("upd_prog(int)"), self.MetaProgressUpdate)
-        self.connect(self.thread, QtCore.SIGNAL("upd_left_time(int)"), self.MetaLeftUpdate)
+        self.connect(self.timer, QtCore.SIGNAL("upd_prog_bar(int)"), self.metaRows["progressBar"], QtCore.SLOT("setValue(int)"))
+        self.connect(self.timer, QtCore.SIGNAL("upd_prog(int)"), self.MetaProgressUpdate)
         self.thread.finished.connect(self.handleStop)
 
     def handleChange(self):
@@ -226,12 +225,8 @@ class Controller(QtGui.QWidget, View):
         
     def MetaTimeUpdate(self):
         self.metaRows["time"].setText( self.m.time )
-        if self.m.left_sec>0:
-            self.metaRows["left"].setText( self.m.left )   
+        self.metaRows["left"].setText( self.m.left )   
         self.tableMetadata.resizeColumnsToContents()
-        
-    def MetaLeftUpdate(self, approx_left):
-        self.m.left_sec = approx_left
         
     def MetaProgressUpdate(self, complete):
         self.metaRows["complete"].setText( str(complete) )
