@@ -11,6 +11,9 @@ class MyThread(QtCore.QThread):
         K = self.c.m.K
         
         for RES in self.func(seq, K):
+            if self.c.status=="stoped":
+                self.quit()
+                break
             
             #self.c.m.result.append( str(RES) )                             # [('a', 'b', 'c'), ... ]
             self.c.m.result.append( "(" + ", ".join(map(str, RES)) + ")" )  # ('a', 'b', 'c') -> (a, b, c)

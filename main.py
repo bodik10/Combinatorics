@@ -41,7 +41,8 @@ class Controller(QtGui.QWidget, View):
         sys.exit(app.exec_())
         
     def closeEvent(self, event):    # clean garbage
-        self.thread.terminate()     # kill thread
+        if self.status in ["started", "paused"]:
+            self.handleStop()       # stop thread    
         del self.m                  # close file
         event.accept()     
 
@@ -76,7 +77,6 @@ class Controller(QtGui.QWidget, View):
         self.tableMetadata.cellDoubleClicked.connect(self.openResult)
         
         self.connect(self.timer, QtCore.SIGNAL("upd_prog_bar(int)"), self.metaRows["progressBar"], QtCore.SLOT("setValue(int)"))
-        self.connect(self.timer, QtCore.SIGNAL("upd_prog(int)"), self.MetaProgressUpdate)
         self.thread.finished.connect(self.handleStop)
 
     def handleChange(self):
@@ -147,8 +147,7 @@ class Controller(QtGui.QWidget, View):
         
         if self.timer.isActive():
             self.timer.stop()
-        if self.thread.isRunning():
-            self.thread.quit()
+            self.MetaTimeUpdate() # adjustment meta data
             
         self.flushResult()
       
@@ -225,11 +224,9 @@ class Controller(QtGui.QWidget, View):
         
     def MetaTimeUpdate(self):
         self.metaRows["time"].setText( self.m.time )
-        self.metaRows["left"].setText( self.m.left )   
-        self.tableMetadata.resizeColumnsToContents()
+        self.metaRows["left"].setText( self.m.left )
+        self.metaRows["complete"].setText( str(self.m.complete) )
         
-    def MetaProgressUpdate(self, complete):
-        self.metaRows["complete"].setText( str(complete) )
         self.tableMetadata.resizeColumnsToContents()
                
     def MetaFileSizeUpdate(self):
