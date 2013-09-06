@@ -41,15 +41,14 @@ class MyTimer(QtCore.QTimer):
         percent = self.c.m.complete / self.c.m.All * 100
         
         self.emit(QtCore.SIGNAL("upd_prog_bar(int)"), round(percent))
-        self.emit(QtCore.SIGNAL("upd_prog(int)"), self.c.m.complete)
 
         # every second calculate time that left
-        # just compare all time that pass to generate curren percent
+        # just compare all time that pass to generate current percent
         
         # e.g. 3 sec need to generate 5%, so 100% will be generate for 100%/5%*3s = 60sec
         # and left 95% for 95%/5%*3s = 57sec
         approx_left = (100-percent) / percent * self.c.m.time_sec
-        self.c.m.left_sec = approx_left
+        self.c.m.left_sec = int(approx_left)
         self.update_left(self.c.m.left_sec)
 
         
