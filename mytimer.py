@@ -20,13 +20,13 @@ class MyTimer(QtCore.QTimer):
             val = left
         elif 60<=left<3600:
             unit = "хв."
-            val = left//60
+            val = left//60 +1
         elif 3600<=left<86400:
             unit = "год. (приблизно)"
-            val = round(left/3600)
+            val = left//3600 +1
         elif left>=86400:
             unit = "дн. (приблизно)"
-            val = round(left/86400)
+            val = left//86400 +1
             
         self.c.m.left = "%s %s" % (val, unit)
                 

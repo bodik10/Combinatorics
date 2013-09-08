@@ -226,6 +226,8 @@ class Controller(QtGui.QWidget, View):
         self.metaRows["time"].setText( self.m.time )
         self.metaRows["left"].setText( self.m.left )
         self.metaRows["complete"].setText( str(self.m.complete) )
+        if self.m.complete == self.m.All:
+            self.metaRows["progressBar"].setValue(100)
         
         self.tableMetadata.resizeColumnsToContents()
                
